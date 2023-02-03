@@ -7,7 +7,7 @@ const query = groq`
   author->,
   categories[]->
   }| order(_createAt desc)
-`
+`;
 
 export default function HomePage() {
 
