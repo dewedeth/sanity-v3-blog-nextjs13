@@ -2,6 +2,7 @@ import { ArrowRightIcon } from "@heroicons/react/24/solid";
 import Image from "next/image";
 import { ReactElement, JSXElementConstructor, ReactFragment, ReactPortal } from "react";
 import urlFor from "../lib/urlFor";
+import ClientSideRoute from "./ClientSideRoute";
 
 
 type Props = {
@@ -16,7 +17,8 @@ function BlogList({posts}: Props) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 px-10 gap-10 gap-y-16 pb-24">
         {posts.map((post) => (
-          <div key={post._id} className='flex flex-col group cursor-pointer'>
+          <ClientSideRoute key={post._id} route={`/post/${post.slug.current}`}>
+          <div className='flex flex-col group cursor-pointer'>
             <div className="relative w-full h-80 drop-shadow-xl group-hover:scale-105
              transition-tranform duration-200 ease-out">
               <Image 
@@ -57,6 +59,7 @@ function BlogList({posts}: Props) {
               <ArrowRightIcon className="ml-2 h-4 w-4"/>
             </p>
           </div>
+          </ClientSideRoute>
         ))}
       </div>
     </div>
